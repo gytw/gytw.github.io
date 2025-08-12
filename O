@@ -1,0 +1,40 @@
+// 精簡版 Decimal.js
+class Decimal {
+    constructor(value) {
+        if (value instanceof Decimal) {
+            this.value = value.value;
+        } else {
+            this.value = Number(value) || 0;
+        }
+    }
+    static ZERO = new Decimal(0);
+    static ONE = new Decimal(1);
+
+    add(n) {
+        return new Decimal(this.value + new Decimal(n).value);
+    }
+    sub(n) {
+        return new Decimal(this.value - new Decimal(n).value);
+    }
+    times(n) {
+        return new Decimal(this.value * new Decimal(n).value);
+    }
+    div(n) {
+        return new Decimal(this.value / new Decimal(n).value);
+    }
+    gt(n) {
+        return this.value > new Decimal(n).value;
+    }
+    gte(n) {
+        return this.value >= new Decimal(n).value;
+    }
+    lt(n) {
+        return this.value < new Decimal(n).value;
+    }
+    lte(n) {
+        return this.value <= new Decimal(n).value;
+    }
+    toString() {
+        return this.value.toLocaleString();
+    }
+}
